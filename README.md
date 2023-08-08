@@ -4,24 +4,24 @@ We will start our project by first documenting all of the routes and data models
 
 #### Routes
 
-##### Project routes
+##### Event routes
 
 | HTTP verb | URL                        | Request body | Action                        |
 | --------- | -------------------------- | ------------ | ----------------------------- |
-| GET       | `/api/projects`            | (empty)      | Returns all the projects      |
-| POST      | `/api/projects`            | JSON         | Adds a new project            |
-| GET       | `/api/projects/:projectId` | (empty)      | Returns the specified project |
-| PUT       | `/api/projects/:projectId` | JSON         | Edits the specified project   |
-| DELETE    | `/api/projects/:projectId` | (empty)      | Deletes the specified project |
+| GET       | `/api/events`              | (empty)      | Returns all the events        |
+| POST      | `/api/events`              | JSON         | Adds a new event              |
+| GET       | `/api/events/:eventId`     | (empty)      | Returns the specified event   |
+| PUT       | `/api/events/:eventId`     | JSON         | Edits the specified event     |
+| DELETE    | `/api/events/:eventId`     | (empty)      | Deletes the specified event   |
 
-##### Task routes
+##### Guest routes
 
-| HTTP verb | URL                  | Request body | Action                     |
-| --------- | -------------------- | ------------ | -------------------------- |
-| POST      | `/api/tasks`         | JSON         | Adds a new task            |
-| GET       | `/api/tasks/:taskId` | (empty)      | Returns the specified task |
-| PUT       | `/api/tasks/:taskId` | JSON         | Edits the specified task   |
-| DELETE    | `/api/tasks/:taskId` | (empty)      | Deletes the specified task |
+| HTTP verb | URL                       | Request body | Action                       |
+| --------- | ------------------------- | ------------ | ---------------------------- |
+| POST      | `/api/guests`             | JSON         | Adds a new guest             |
+| GET       | `/api/guests/:guestsId`   | (empty)      | Returns the specified guest  |
+| PUT       | `/api/guests/:guestsId`   | JSON         | Edits the specified guest    |
+| DELETE    | `/api/guests/:guestsId`   | (empty)      | Deletes the specified guest  |
 
 
 
@@ -39,23 +39,27 @@ We will start our project by first documenting all of the routes and data models
 
 #### Models
 
-##### Project Model
+##### Event Model
 
 ```js
 {
-  title: String,
-  description: String,
-  tasks: [ { type: Schema.Types.ObjectId, ref: 'Task' } ]
+date: Date,
+time: String,
+location: String,
+description: String
 }
+
 ```
 
-##### Task Model
+##### Guest Model
 
 ```js
 {
-  title: String,
-  description: String,
-  project: { type: Schema.Types.ObjectId, ref: 'Project' }
+  name: String,
+  plusOne: String,
+  allergyInfo: String,
+  dietaryInfo: String,
+  event: { type: Schema.Types.ObjectId, ref: 'Event' }
 }
 ```
 
