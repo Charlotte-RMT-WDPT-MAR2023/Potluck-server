@@ -5,11 +5,11 @@ const foodSchema = new Schema({
     type: String,
     trim: true,
   },
-  mealAllergens: {
+  allergyInfo: {
     type: String,
     trim: true,
   },
-  mealDietary: {
+  dietaryInfo: {
     type: String,
     trim: true,
   },
