@@ -7,9 +7,9 @@ const Event = require("../models/Event.model");
 
 //  POST /api/guests  -  Creates a new guest
 router.post("/guests", (req, res, next) => {
-  const { name, plusOne, allergyInfo, dietaryInfo, foodId, eventId } = req.body;
+  const { name, plusOne, email, allergyInfo, dietaryInfo, foodId, eventId } = req.body;
 
-  Guest.create({ name, plusOne, allergyInfo, dietaryInfo, food: foodId, event: eventId })
+  Guest.create({ name, plusOne, email, allergyInfo, dietaryInfo, food: foodId, event: eventId })
     .then((newGuest) => {
       return Event.findByIdAndUpdate(eventId, {
         $push: { guest: newGuest._id },

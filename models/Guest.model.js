@@ -10,12 +10,16 @@ const guestSchema = new Schema({
     type: String,
     trim: true,
   },
-  allergyInfo: {
+  email: {
     type: String,
     trim: true,
   },
+  allergyInfo: {
+    type: Array,
+    trim: true,
+  },
   dietaryInfo: {
-    type: String,
+    type: Array,
     trim: true,
   },
  food: { type: Schema.Types.ObjectId, ref: "food" },

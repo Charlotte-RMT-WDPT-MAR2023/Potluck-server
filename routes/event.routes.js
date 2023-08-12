@@ -7,9 +7,9 @@ const Guest = require("../models/Guest.model");
 
 //  POST /api/events  -  Creates a new event
 router.post("/events", (req, res, next) => {
-  const { date, time, location, description} = req.body;
+  const { title, date, time, location, description} = req.body;
 
-  Event.create({ date, time, location, description })
+  Event.create({ title, date, time, location, description })
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
 });
@@ -32,7 +32,7 @@ router.get("/events/:eventId", (req, res, next) => {
 
 
   Event.findById(eventId)
-   // .populate("guests")
+    .populate("guests")
     .then((event) => res.status(200).json(event))
     .catch((error) => res.json(error));
 });

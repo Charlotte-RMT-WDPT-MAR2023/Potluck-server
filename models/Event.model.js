@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
+const moment = require('moment');
 
 const eventSchema = new Schema(
   {
+    title: {
+      type: String,
+    },
     date: {
       type: Date,
     },
