@@ -20,7 +20,7 @@ const eventSchema = new Schema(
     description: {
       type: String,
     },
-    guests: [{ type: Schema.Types.ObjectId, ref: "Guests" }],
+    guests: [{ type: Schema.Types.ObjectId, ref: "Guest" }],
     food: [{ type: Schema.Types.ObjectId, ref: "Food" }],
   },
   {

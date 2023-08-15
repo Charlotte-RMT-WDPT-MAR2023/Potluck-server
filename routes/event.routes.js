@@ -9,21 +9,24 @@ const Guest = require("../models/Guest.model");
 router.post("/events", (req, res, next) => {
   const { title, date, time, location, description} = req.body;
 
-  Event.create({ title, date, time, location, description, guests: [] })
+  Event.create({ title, date, time, location, description, guests: [], food: []  })
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
 });
 
 //  GET /api/events -  Retrieves all of the events
-router.get("/events", (req, res, next) => {
-  Event.find()
-//  .populate("guests")
-        .then((allEvents) => res.json(allEvents))
-    .catch((err) => res.json(err));
+router.get("/events", async (req, res, next) => {
+  
+  
+ Event.find()
+  .populate("guests")
+  .populate("food")
+       .then((allEvents) => res.json(allEvents))
+  .catch((err) => res.json(err));
 });
 
 //  GET /api/events/:eventId -  Retrieves a specific event by id
-router.get("/events/:eventId", (req, res, next) => {
+router.get("/events/:eventId", async (req, res, next) => {
   const { eventId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
@@ -31,12 +34,20 @@ router.get("/events/:eventId", (req, res, next) => {
     return;
   }
 
+ // const eventList = await Event.findById(eventId).populate("guests")
 
-  Event.findById(eventId)
-   // .populate("guests")
+  //if(eventList) return res.status(2002).json(eventList)
+
+
+ Event.findById(eventId)
+
+    .populate("guests")
+    .populate("food")
     .then((event) => res.status(200).json(event))
-    .catch((error) => res.json(error));
+   .catch((error) => res.json(error));
 });
+
+
 
 // PUT  /api/events/:eventId  -  Updates a specific event by id
 router.put("/events/:eventId", (req, res, next) => {
