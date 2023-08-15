@@ -14,6 +14,10 @@ const guestSchema = new Schema({
     type: String,
     trim: true,
   },
+  rsvp: {
+    type: String,
+    trim: true,
+  },
   allergyInfo: {
     type: Array,
     trim: true,
