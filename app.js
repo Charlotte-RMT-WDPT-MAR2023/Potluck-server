@@ -19,6 +19,9 @@ app.use("/api", isAuthenticated, eventRouter);
 const guestRouter = require("./routes/guest.routes");
 app.use("/api", isAuthenticated, guestRouter);
 
+const foodRouter = require("./routes/food.routes");
+app.use("/api", isAuthenticated, foodRouter);
+
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 

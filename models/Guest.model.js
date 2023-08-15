@@ -22,8 +22,8 @@ const guestSchema = new Schema({
     type: Array,
     trim: true,
   },
- food: { type: Schema.Types.ObjectId, ref: "food" },
-  event: { type: Schema.Types.ObjectId, ref: "event" },
+ food: { type: Schema.Types.ObjectId, ref: "Food" },
+  event: { type: Schema.Types.ObjectId, ref: "Event" },
 });
 
 module.exports = model("Guest", guestSchema);

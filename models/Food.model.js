@@ -6,13 +6,15 @@ const foodSchema = new Schema({
     trim: true,
   },
   allergyInfo: {
-    type: String,
+    type: Array,
     trim: true,
   },
   dietaryInfo: {
-    type: String,
+    type: Array,
     trim: true,
   },
+  event: { type: Schema.Types.ObjectId, ref: "Event" },
+  guest: { type: Schema.Types.ObjectId, ref: "Guest" },
 });
 
 module.exports = model("Food", foodSchema);

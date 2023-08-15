@@ -12,7 +12,7 @@ router.post("/guests", (req, res, next) => {
   Guest.create({ name, plusOne, email, allergyInfo, dietaryInfo, food: foodId, event: eventId })
     .then((newGuest) => {
       return Event.findByIdAndUpdate(eventId, {
-        $push: { guest: newGuest._id },
+        $push: { guests: newGuest._id },
       });
     })
     .then((response) => res.json(response))
